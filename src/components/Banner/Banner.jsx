@@ -26,7 +26,7 @@ const Banner = () => {
           alt={movie?.original_title}
         />
       </div>
-      <div className="absolute w-full top-[60%] md:top-[25%] p-6">
+      <div className="absolute w-full top-[40%] md:top-[25%] p-6">
         <h2 className="text-3xl font-semibold mb-4 md:text-5xl">
           {movie?.title}
         </h2>
