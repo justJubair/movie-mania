@@ -6,7 +6,7 @@ function App() {
  
 
   return (
-    <div className="h-[100vh]">
+    <div>
      
       <Navbar/>
       <Outlet/>
