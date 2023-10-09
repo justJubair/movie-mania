@@ -1,6 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+
 
 const SignUp = () => {
+  const {createUser} = useAuth()
+
+  const navigate = useNavigate()
+  // handle signup
+  const handleSignUp = e=>{
+    e.preventDefault()
+    const form = new FormData(e.currentTarget)
+    const email = form.get("email");
+    const password = form.get("password")
+    createUser(email, password)
+    .then(()=>{
+        toast.success("Successfully subscribed")
+        navigate("/")
+    })
+    .catch(error=>{
+      toast.error(error.message)
+    })
+  }
   return (
     <div className="w-full h-screen">
       <img
@@ -13,9 +34,9 @@ const SignUp = () => {
         <div className="max-w-[450px] lg:h-[600px] mx-auto bg-black/70 text-white">
           <div className="max-w-[320px] mx-auto py-16">
             <h1 className="text-3xl font-bold mb-6">Sign Up</h1>
-            <form className="flex flex-col items-center">
-                <input className="px-4 py-3 w-full bg-gray-800 rounded mb-4" type="email" placeholder="Email" required/>
-                <input className="px-4 py-3 w-full bg-gray-800 rounded mb-2" type="password" placeholder="Password" required/>
+            <form onSubmit={handleSignUp} className="flex flex-col items-center">
+                <input className="px-4 py-3 w-full bg-gray-800 rounded mb-4" type="email" placeholder="Email" name="email" required/>
+                <input className="px-4 py-3 w-full bg-gray-800 rounded mb-2" type="password" placeholder="Password" name="password" required/>
                 <input className="btn mt-8 bg-red-700 border-none w-full text-white" type="submit" value="Sign Up" />
             </form>
             <div className="flex justify-between items-center mt-3">
