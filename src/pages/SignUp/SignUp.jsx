@@ -14,8 +14,8 @@ const SignUp = () => {
           <div className="max-w-[320px] mx-auto py-16">
             <h1 className="text-3xl font-bold mb-6">Sign Up</h1>
             <form className="flex flex-col items-center">
-                <input className="px-4 py-3 w-full bg-gray-600 rounded mb-4" type="email" placeholder="Email" required/>
-                <input className="px-4 py-3 w-full bg-gray-600 rounded mb-2" type="password" placeholder="Password" required/>
+                <input className="px-4 py-3 w-full bg-gray-800 rounded mb-4" type="email" placeholder="Email" required/>
+                <input className="px-4 py-3 w-full bg-gray-800 rounded mb-2" type="password" placeholder="Password" required/>
                 <input className="btn mt-8 bg-red-700 border-none w-full text-white" type="submit" value="Sign Up" />
             </form>
             <div className="flex justify-between items-center mt-3">
@@ -25,9 +25,9 @@ const SignUp = () => {
                 <small>Remember me</small></p>
                 <p className="text-gray-400"><small>Need help?</small></p>
             </div>
-            <div className="flex gap-2 mt-14">
-              <p className="text-gray-400">Already have an account?</p>
-              <Link>Sign in now</Link>
+            <div className="flex gap-2 py-14">
+              <p className="text-gray-400">Already subscribed?</p>
+              <Link to="/signin">Sign in now</Link>
             </div>
           
           </div>
