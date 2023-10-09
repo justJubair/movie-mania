@@ -2,12 +2,12 @@ import {getAuth} from "firebase/auth"
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyBuytkeJfv_R-hBBkyVJAsLcdsYhoOzRL8",
-  authDomain: "netflix-clone-c9377.firebaseapp.com",
-  projectId: "netflix-clone-c9377",
-  storageBucket: "netflix-clone-c9377.appspot.com",
-  messagingSenderId: "764902692574",
-  appId: "1:764902692574:web:438698fc5995128f6cd44f"
+  apiKey:import.meta.env.VITE_APIKEY,
+  authDomain:import.meta.env.VITE_AUTHDOMAIN,
+  projectId:import.meta.env.VITE_PROJECTID,
+  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
+  appId:import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
