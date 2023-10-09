@@ -18,7 +18,7 @@ const Navbar = () => {
   }
   return (
     <div className="p-6 items-center  flex flex-col  justify-between absolute w-full z-[100] md:flex-row">
-        <Link to="/" className="text-3xl mb-2 text-red-600 cursor-pointer">NETFLIX</Link>
+        <Link to="/"><h1  className="text-3xl mb-2 text-red-600 cursor-pointer font-bold">NETFLIX</h1></Link>
         <div>
             {
               user ? <Link to="/account" className="btn btn-sm mr-6 bg-black text-white border-none hover:bg-white hover:text-black md:btn md:bg-black md:text-white">Account</Link> : <Link to="/signin" className="btn btn-sm mr-6 bg-black text-white border-none hover:bg-white hover:text-black md:btn md:bg-black md:text-white">Sign in</Link>
