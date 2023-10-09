@@ -6,4 +6,4 @@ const useAuth = ()=>{
     return all
 }
 
-export default useAuth 
+export default useAuth  

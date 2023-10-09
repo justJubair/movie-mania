@@ -8,19 +8,17 @@ const SignUp = () => {
 
   const navigate = useNavigate()
   // handle signup
-  const handleSignUp = e=>{
+  const handleSignUp = async (e)=>{
     e.preventDefault()
     const form = new FormData(e.currentTarget)
     const email = form.get("email");
     const password = form.get("password")
-    createUser(email, password)
-    .then(()=>{
-        toast.success("Successfully subscribed")
-        navigate("/")
-    })
-    .catch(error=>{
+    try{
+      await createUser(email, password);
+      navigate("/")
+    } catch(error){
       toast.error(error.message)
-    })
+    }
   }
   return (
     <div className="w-full h-screen">
