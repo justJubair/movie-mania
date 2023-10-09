@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const RowMovie = ({movie}) => {
     const [like, setLike] = useState(false)
-    console.log(movie)
+
   return (
     <>
       <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] cursor-pointer relative inline-block p-2">

@@ -27,7 +27,7 @@ const Banner = () => {
         />
       </div>
       <div className="absolute w-full top-[40%] md:top-[25%] p-6">
-        <h2 className="text-3xl font-semibold mb-4 md:text-5xl">
+        <h2 className="text-3xl font-semibold mb-8 md:text-5xl">
           {movie?.title}
         </h2>
         <div>
