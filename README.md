@@ -1,8 +1,15 @@
-# React + Vite
+# Movie Mania
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Live site link](https://netflix-clone-beta-lyart.vercel.app) 
 
-Currently, two official plugins are available:
+### Features
+Down below I briefly discussed about the top features of this website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- The data has been fetched from movieDB api to create this landing page.
+- Users can login with email or social logins are also implemented.
+- Users can like any specific movies they want and those movies or series will show up on their watch list. But for this functionality users must be logged in
+
+
+
+
+
