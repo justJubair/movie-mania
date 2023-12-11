@@ -1,6 +1,6 @@
 # Movie Mania
 
-[Live site link](https://netflix-clone-beta-lyart.vercel.app) 
+[Live site link](https://movie-mania-peach.vercel.app) 
 
 ### Features
 Down below I briefly discussed about the top features of this website.
