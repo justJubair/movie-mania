@@ -17,7 +17,7 @@ const SavedShows = () => {
         slider.scrollLeft = slider.scrollLeft + 500
       }
       useEffect(()=>{
-        fetch(`http://localhost:5000/movies?email=${user?.email}`)
+        fetch(`https://movie-mania-server-eight.vercel.app/movies?email=${user?.email}`)
         .then(res=>res.json())
         .then(data=> {
           console.log(data)
@@ -28,7 +28,7 @@ const SavedShows = () => {
 
       const deleteShow = async (passedID)=>{
         try{
-          const res = await axios.delete(`http://localhost:5000/movie/${passedID}`)
+          const res = await axios.delete(`https://movie-mania-server-eight.vercel.app/movie/${passedID}`)
           if(res.data.deletedCount>0){
             const remainingMovies = movies.filter(movie=> movie._id !== passedID)
             setMovies(remainingMovies)

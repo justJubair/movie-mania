@@ -16,7 +16,7 @@ const RowMovie = ({movie}) => {
 
       try{
           const selectedMovie = {title: movie?.title, img: `https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`, email: user?.email}
-          const res = await axios.post("http://localhost:5000/movies", selectedMovie)
+          const res = await axios.post("https://movie-mania-server-eight.vercel.app/movies", selectedMovie)
           console.log(res)
           if(res.data.insertedId){
             setLike(!like)
