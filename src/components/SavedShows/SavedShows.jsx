@@ -1,10 +1,9 @@
 import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
-import { doc, onSnapshot, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase.config";
 import {AiOutlineClose} from "react-icons/ai"
 import toast from "react-hot-toast";
+import axios from "axios";
 const SavedShows = () => {
     const [movies, setMovies] = useState([])
     const {user} = useAuth()
@@ -18,19 +17,23 @@ const SavedShows = () => {
         slider.scrollLeft = slider.scrollLeft + 500
       }
       useEffect(()=>{
-        onSnapshot(doc(db, "users", `${user?.email}`), doc=>{
-            setMovies(doc.data()?.savedShows)
+        fetch(`http://localhost:5000/movies?email=${user?.email}`)
+        .then(res=>res.json())
+        .then(data=> {
+          console.log(data)
+          setMovies(data)
         })
       },[user?.email])
 
-      const movieRef = doc(db, "users", `${user?.email}`)
+
       const deleteShow = async (passedID)=>{
         try{
-            const result = movies.filter(item=> item.id !== passedID)
-          await updateDoc(movieRef, {
-            savedShows: result
-          })
-          toast.success("Deleted")
+          const res = await axios.delete(`http://localhost:5000/movie/${passedID}`)
+          if(res.data.deletedCount>0){
+            const remainingMovies = movies.filter(movie=> movie._id !== passedID)
+            setMovies(remainingMovies)
+            toast.success("Deleted")
+          }
         }
         catch(error){
           console.error(error)
@@ -45,11 +48,11 @@ const SavedShows = () => {
         <MdChevronLeft onClick={sliderLeft} className="absolute left-2 rounded-full bg-white/80 z-10 top-12 md:top-20 hidden cursor-pointer group-hover:block hover:bg-white" size={40} />
         <div id={'slider'} className="w-full h-full whitespace-nowrap overflow-x-scroll scroll-smooth scrollbar-hide relative ">
           {movies?.map((movie) => (
-            <div key={movie.id} className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] cursor-pointer relative inline-block p-2">
-            <img src={`https://image.tmdb.org/t/p/w500${movie?.img}`} alt={movie?.title} />
+            <div key={movie._id} className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] cursor-pointer relative inline-block p-2">
+            <img src={movie?.img} alt={movie?.title} />
             <div className="absolute top-0 w-full h-full hover:bg-black/80 hover:opacity-100 opacity-0 text-white">
               <p className="font-bold flex justify-center items-center text-xs md:text-sm h-full">{movie?.title}</p>
-             <p onClick={()=> deleteShow(movie.id)} className="absolute top-3 right-5"><AiOutlineClose size={20}/></p>
+             <p onClick={()=> deleteShow(movie._id)} className="absolute top-3 right-5"><AiOutlineClose size={20}/></p>
             </div>
             </div>
           ))}
