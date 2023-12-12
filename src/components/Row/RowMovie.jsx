@@ -2,30 +2,31 @@
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase/firebase.config";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const RowMovie = ({movie}) => {
     const [like, setLike] = useState(false)
     
     const {user} = useAuth()
-
-    const movieID = doc(db, "users", `${user?.email}`)
     const saveShow = async ()=>{
-      if(user?.email) {
-        setLike(!like)
-       
-        await updateDoc(movieID, {
-          savedShows: arrayUnion({
-            id: movie.id,
-            title: movie.title,
-            img: movie.backdrop_path
-          })
-        })
-      } else {
-        toast.error("Please log in to save a movie")
+      if(!user?.email){
+        return  toast.error("Please log in to save a movie")
       }
+
+      try{
+          const selectedMovie = {title: movie?.title, img: `https://image.tmdb.org/t/p/w500${movie?.backdrop_path}`, email: user?.email}
+          const res = await axios.post("http://localhost:5000/movies", selectedMovie)
+          console.log(res)
+          if(res.data.insertedId){
+            setLike(!like)
+            toast.success(`${movie?.title} saved to your account`)
+          }
+      }
+      catch(err){
+        console.log("Error posting movie", err)
+      }
+
     }
   return (
     <>
