@@ -24,7 +24,7 @@ const Row = ({ title, fetchURL, rowId }) => {
 
       <div className="p-4 relative group">
         <MdChevronLeft onClick={sliderLeft} className="absolute left-2 rounded-full bg-white/80 z-10 top-12 md:top-20 hidden cursor-pointer group-hover:block hover:bg-white" size={40} />
-        <div id={'slider' + rowId} className="w-full h-full whitespace-nowrap overflow-x-scroll scroll-smooth scrollbar-hide relative ">
+        <div id={'slider' + rowId} className="w-full h-full whitespace-nowrap overflow-x-scroll scroll-smooth scrollbar-hide relative">
           {movies.map((movie) => (
             <RowMovie key={movie.id} movie={movie} />
           ))}
